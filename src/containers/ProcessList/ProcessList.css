@@ -1,0 +1,24 @@
+.ProcessList__body {
+  padding-top: 60px;
+  background:#EBF2FB;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.Process__container:first-child {
+  margin-top: 22px;
+}
+
+.Process__container:last-child {
+  margin-bottom: 22px;
+}
+
+
+.ProcessList__container {
+  margin-top: 22px;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 56px;
+}

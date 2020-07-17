@@ -1,17 +1,63 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './App/App';
+import {BrowserRouter} from 'react-router-dom'
+import * as serviceWorker from './serviceWorker'
+import {createStore, compose, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import rootRedusers from './store/reducers/rootReducers'
+import thunk from 'redux-thunk'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from '@apollo/react-hooks'
+
+
+
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/api",
+  request: (operation) => {
+    const token = localStorage.getItem('token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  }
+})
+
+
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+  }) : compose;
+
+const store = createStore(
+  rootRedusers, 
+  composeEnhancers(
+    applyMiddleware(thunk)
+    )
+  )
+
+const app = (
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+    </Provider>
+  </ApolloProvider>
+)
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <React.Fragment>
+    {app}
+  </React.Fragment>,
+  // </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()

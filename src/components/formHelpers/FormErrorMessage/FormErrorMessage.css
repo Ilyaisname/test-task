@@ -1,0 +1,23 @@
+.Form-error {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  background: #FFE9DB;
+  width: 100%;
+  padding: 12px 50px;
+  box-sizing: border-box;
+}
+
+.Form-error span:nth-child(1) {
+  flex: 1 1 30%;
+}
+
+.Form-error span:nth-child(2) {
+  flex: 1 1 70%;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #333333;
+}

@@ -1,0 +1,238 @@
+.Process__container {
+  max-width: 1320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  padding: 0 22px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.Process__container:last-child {
+  margin-bottom: 22px;
+}
+
+.Process__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 12px 0;
+}
+
+.Process__header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -22px;
+  width: 100%;
+  max-width: 1320px;
+  border: 1px solid #D6DCE9;
+}
+
+.Process__header h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #6879BB;
+
+}
+
+.header__href {
+  font-family:'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #6879BB;
+  position: relative;
+  padding-right: 24px;
+}
+
+.header__href::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  transform: rotate(45deg);
+  right: 0;
+  height: 2px;
+  width: 8px;
+  background-color: #6879BB;
+}
+
+.header__href::before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  transform: rotate(-45deg);
+  right: 0;
+  height: 2px;
+  width: 8px;
+  background-color: #6879BB;
+}
+
+.Process__wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Process__counter,
+.Process__time,
+.Process__persons,
+.Process__date {
+  width: 254px;
+  height: 192px;
+}
+
+._icon {
+  color: #535374;
+  /* font-size: 29px; */
+  padding-right: 16px;
+  padding-top: 4px;
+}
+
+.Process__wrap.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Process__counter,
+.Process__time,
+.Process__persons,
+.Process__date {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-left: 20px;
+}
+
+.counter__number {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  color: #535374;
+  position: relative;
+  padding: 0 1px;
+}
+
+.counter__number::after{
+  bottom: -12px;
+  left: 0;
+  content: "выполнено раз";
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #999999; 
+}
+
+.time,
+.persons,
+.date__wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.Process__time.coll,
+.Process__persons.coll,
+.Process__date.coll {
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.time__time,
+.time__percent,
+.persons__sum,
+.persons__scripts {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #535374;
+  position: relative;
+}
+
+.time__time::after,
+.time__percent::after,
+.persons__sum::after,
+.persons__scripts::after {
+  bottom: -20px;
+  left: 0;
+  content: "среднее время выполнения";
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #999999; 
+  width: max-content;
+}
+
+.time__percent::after {
+  content: "среднее активное время";
+}
+
+.persons__sum::after {
+  content: "участвует в процессе";
+}
+
+.persons__scripts::after {
+  content: "в процессе";
+}
+
+.date__start,
+.date__end,
+.date__loading {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #999999;
+  flex: 0 0 40%;
+}
+
+.date__date-number {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  flex: 1 0 50%;
+}

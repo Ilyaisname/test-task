@@ -1,0 +1,132 @@
+.User-page__body {
+  padding-top: 60px;
+  background:#EBF2FB;
+  width: 100%;
+  height: 100vh;
+}
+
+.User-page__container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.User-page__form {
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.User-page__form div:nth-child(1) {
+  padding-top: 24px;
+}
+
+.User-page__form:nth-last-child(1) {
+  padding-bottom: 36px;
+}
+
+.form__row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 24px;
+}
+
+.User-page__form label {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #999999;
+  flex: 2 0 30%;
+  padding-top: 10px;
+}
+
+.User-page__form .Input {
+  flex: 1 4 66%;
+}
+
+.User-page.btn {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #333333;
+  padding: 12px 24px;
+  border: none;
+}
+
+.User-page.btn_color-yellow {
+  background: #FFCE0C;
+  border-radius: 4px;
+}
+
+.User-page.btn.btn_color-yellow {
+  margin-top: 30px;
+  margin-bottom: 18px;
+  flex: 1 1 80%
+}
+
+.User-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 6px;
+}
+
+.header__user-name span{
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  color: #404064;
+  flex: 0 0 20%;
+}
+
+.btn:hover {
+  background: #FFD73B;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+.btn:active {
+  background: #FFC40C;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  
+}
+
+.btn:focus {
+  background: #FFCE0C;
+  border: 1px solid #FFFBEA;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 10px #FFD73B;
+  border-radius: 4px;
+  outline: 0;
+}
+
+.btn:disabled {
+  background: #FFCE0C;
+  border-radius: 4px;
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.btn:disabled:hover {
+  box-shadow: none;
+}
+
+/* @media screen and (max-width: 480px) {
+  .User-page__container {
+    padding: 0 0px;
+    margin: 0 auto;
+  }
+} */

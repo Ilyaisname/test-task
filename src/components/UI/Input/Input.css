@@ -1,0 +1,49 @@
+.Input {
+  padding-bottom: 12px;
+}
+
+.Input input {
+  width: 100%;
+  max-width: 435px;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #D6DCE9;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #6879BB;
+  padding: 6px 12px;
+}
+
+.Input.invalid input:focus{
+  color: #EE4141;
+}
+
+.Input input:focus {
+  background: #FFFFFF;
+  border: 1px solid #415FD5;
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: auto;
+}
+
+.input-error-message {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;  
+  color: #EE4141;
+}
+
+
+
+
