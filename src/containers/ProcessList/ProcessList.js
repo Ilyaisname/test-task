@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import './ProcessList.css'
-import PageMenu from '../../components/PageMenu/PageMenu'
 import Process from '../../components/Process/Process'
 import {connect} from 'react-redux'
 import { fetchProcess } from '../../store/actions/actionProcess'
@@ -11,10 +10,7 @@ import moment from 'moment'
 
 
 class ProcessList extends Component {
-  state = {
-    isOpen: false
-  }
-
+  
   createDate = (timeStamp) => {
     return moment(timeStamp, 'X').format("D MMMM YYYY")
   }
@@ -52,12 +48,6 @@ class ProcessList extends Component {
     const {data} = this.props
     this.props.fetchProcess(data)
   }
-  
-  menuToogle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
 
   render() {
     moment.updateLocale('en', {
@@ -68,18 +58,13 @@ class ProcessList extends Component {
     })
 
     return(
-      <div className="ProcessList__body">
-          <PageMenu 
-            menuToogle = {this.menuToogle}
-            isOpen = {this.state.isOpen}
-          />
-          <div className="ProcessList__container">
-            {this.props.data.loading && this.props.data.processList === undefined ?
-              <h3 style = {{textAlign: "center"}}> Загрузка </h3>
-              : this.renderProcess()
-            }
-          </div>
+      <div className="ProcessList__container">
+        {this.props.data.loading && this.props.data.processList === undefined ?
+          <h3 style = {{textAlign: "center"}}> Загрузка </h3>
+          : this.renderProcess()
+       }
       </div>
+  
     )
   }
 }

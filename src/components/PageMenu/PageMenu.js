@@ -10,11 +10,12 @@ const PageMenu = props => {
         {props.isOpen ?
           <MenuActive 
             isOpen = {props.isOpen}
+            onToogle = {props.menuToogle}
           />
         :
           <div className="Menu__wrap">
-            <span onClick = {props.menuToogle} className="Menu__icon"><IconMenuBlue /> </span>
-            <span onClick = {props.menuToogle} className="Menu__text">Меню</span>
+            <span onClick = {() => props.menuToogle(!props.isOpen)} className="Menu__icon"><IconMenuBlue /> </span>
+            <span onClick = {() => props.menuToogle(!props.isOpen)} className="Menu__text">Меню</span>
           </div>
         }
       </div>

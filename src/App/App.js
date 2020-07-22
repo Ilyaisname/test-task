@@ -7,6 +7,7 @@ import AuthForm from '../containers/AuthForm/AuthForm';
 import RegistrationForm from '../containers/RegistrationForm/RegistrationForm';
 import { connect } from 'react-redux';
 import Authbackground from '../hoc/AuthBackground/AuthBackground';
+import Pages from '../hoc/Pages/Pages'
 
 class App extends Component {
 
@@ -22,11 +23,13 @@ class App extends Component {
 
     if (this.props.isAuthenticated) {
       routes = (
-        <Switch>
-          <Route path="/user-page" component={UserPage} />
-          <Route path="/process" component={ProcessList} />
-          <Redirect to="/user-page" />
-        </Switch>
+        <Pages>
+          <Switch>
+            <Route path="/user-page" component={UserPage} />
+            <Route path="/process" component={ProcessList} />
+            <Redirect to="/user-page" />
+          </Switch>
+        </Pages>
       )
     }
     return (

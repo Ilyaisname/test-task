@@ -1,0 +1,7 @@
+.Pages__body {
+  padding-top: 60px;
+  background:#EBF2FB;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}

@@ -1,18 +1,16 @@
 import React, {Component} from 'react'
 import './UserPage.css'
-import PageMenu from '../../components/PageMenu/PageMenu'
 import Input from '../../components/UI/Input/Input'
 import { connect } from 'react-redux'
 import { editUserData } from '../../store/actions/actionsUser'
 import { graphql } from 'react-apollo'
 import { editUser } from '../../queries/mutations'
-import { createOptionName } from '../../components/formHelpers/formHelper'
+import { createOptionName, isEqual } from '../../components/formHelpers/formHelper'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import {initialize} from 'redux-form'
 import { validate } from '../../components/formHelpers/validateForm/editUserValidate'
 import FormErrorMessage from '../../components/formHelpers/FormErrorMessage/FormErrorMessage'
 import { clearErrorMessage } from '../../store/actions/actionsUser'
-
 
 
 class UserPage extends Component {
@@ -50,7 +48,7 @@ class UserPage extends Component {
   }
 
   saveUserData = () => {
-    const {firstName, secondName, email, password} = this.props.userEditValue
+    const { firstName, secondName, email, password } = this.props.userEditValue
       const newUserData = {
         id: +localStorage.getItem('userId'),
         firstName: firstName,
@@ -62,22 +60,15 @@ class UserPage extends Component {
       this.props.editUserData(newUserData, this.props.mutate, this.props.token)
   }
 
-  menuToogle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
   buttonVisible = () => {
-    
-    const {anyTouched, valid} = this.props
-    if (anyTouched && valid) {
+    const { valid, userEditValue, userDataValue } = this.props
+    if ( valid && !isEqual(userEditValue, userDataValue) ) {
       return false
     } else return true
   }
 
   componentDidUpdate() {
-    this.props.clearErrorMessage()
+    if (this.props.errorMessage) this.props.clearErrorMessage()
   }
 
   transformToUppercase = str => {
@@ -89,34 +80,29 @@ class UserPage extends Component {
   render() {
     const {handleSubmit} = this.props
     return(
-      <div className="User-page__body">
-          <PageMenu 
-            menuToogle = {this.menuToogle}
-            isOpen = {this.state.isOpen}
-          />
-        <div className = "User-page__container">
-          <div className = "User-page__header">
-            <div className = "header__user-name">
-              <span>{this.transformToUppercase(this.props.userDataValue.firstName)} {this.transformToUppercase(this.props.userDataValue.secondName)}. Редактирование</span>
-            </div>
-            <div className = "header__button">
-              <button 
-                className = "User-page btn btn_color-yellow"
-                onClick = {this.saveUserData}
-                disabled = {this.buttonVisible()}
-                >Сохранить</button>
-            </div>
+      <div className = "User-page__container">
+        <div className = "User-page__header">
+          <div className = "header__user-name">
+            <span>{this.transformToUppercase(this.props.userDataValue.firstName)} {this.transformToUppercase(this.props.userDataValue.secondName)}. Редактирование</span>
           </div>
-          <form className="User-page__form" onSubmit={handleSubmit}>
-
-            {this.renderInputs()}
-            
-          </form>
-
-          {this.props.errorMessage ? <FormErrorMessage errorMessage = {this.props.errorMessage} /> : null}
-       
+          <div className = "header__button">
+            <button 
+              className = "User-page btn btn_color-yellow"
+              onClick = {this.saveUserData}
+              disabled = {this.buttonVisible()}
+            > 
+              Сохранить
+            </button>
+          </div>
         </div>
-      
+        <form className="User-page__form" onSubmit={handleSubmit}>
+
+          {this.renderInputs()}
+            
+        </form>
+
+        {this.props.errorMessage ? <FormErrorMessage errorMessage = {this.props.errorMessage} /> : null}
+       
       </div>
     )
   }
