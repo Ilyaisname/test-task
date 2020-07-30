@@ -8,6 +8,7 @@ export function createOptionName(fieldType = "text", fieldName, fieldPlaceholder
   }
 }
 
+// сравнивает два объекта
 export const isEqual = (a, b) => {
   if (a === b) return true;
   if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) return a === b;

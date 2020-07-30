@@ -52,11 +52,11 @@ const app = (
 
 
 ReactDOM.render(
-  // <React.StrictMode>
+ 
   <React.Fragment>
     {app}
   </React.Fragment>,
-  // </React.StrictMode>,
+
   document.getElementById('root')
 )
 

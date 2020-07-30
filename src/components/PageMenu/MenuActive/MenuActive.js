@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import IconMenu from '../menuIcons/IconMenu'
 import UserPic from '../menuIcons/UserPic'
 import ProcessIcon from '../menuIcons/ProcessIcon'
