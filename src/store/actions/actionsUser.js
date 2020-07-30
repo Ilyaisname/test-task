@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS, AUTH_ERROR, EDIT_USER_DATA_SUCCESS, CLEAR_ERROR } from "./actionsType"
+import { AUTH_SUCCESS, AUTH_ERROR, EDIT_USER_DATA_SUCCESS, CLEAR_ERROR, SUCCESS } from "./actionsType"
 
 // вход в систему
 export function authentication(email, password, mutate) {
@@ -66,6 +66,12 @@ export function editUserData(newUserData, mutate) {
       const userData = reqest.data.editUser
       dispatch(editSuccess(userData))
 
+      if (userData) {
+        setTimeout( () => {
+          dispatch(changeSuccess())
+        }, 3000) 
+      }
+
     } catch (error) {
 
       const  { message } = error
@@ -106,5 +112,11 @@ export function authError(error) {
 export function clearError() {
   return {
     type: CLEAR_ERROR,
+  }
+}
+
+export function changeSuccess() {
+  return {
+    type: SUCCESS
   }
 }

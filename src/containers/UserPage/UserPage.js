@@ -61,8 +61,10 @@ class UserPage extends Component {
   }
 
   buttonVisible = () => {
-    const { valid, userEditValue, userDataValue } = this.props
+    const { valid, userEditValue, userDataValue, success } = this.props
     if ( valid && !isEqual(userEditValue, userDataValue) ) {
+      return false
+    } else if (success) {
       return false
     } else return true
   }
@@ -79,11 +81,12 @@ class UserPage extends Component {
 
   render() {
     const {handleSubmit} = this.props
+    const {firstName, secondName} = this.props.userDataValue
     return(
       <div className = "User-page__container">
         <div className = "User-page__header">
           <div className = "header__user-name">
-            <span>{this.transformToUppercase(this.props.userDataValue.firstName)} {this.transformToUppercase(this.props.userDataValue.secondName)}. Редактирование</span>
+            <span>{this.transformToUppercase(firstName)} {this.transformToUppercase(secondName)}. Редактирование</span>
           </div>
           <div className = "header__button">
             <button 
@@ -91,7 +94,7 @@ class UserPage extends Component {
               onClick = {this.saveUserData}
               disabled = {this.buttonVisible()}
             > 
-              Сохранить
+              { this.props.success ? 'Сохранено' : 'Сохранить'}
             </button>
           </div>
         </div>
@@ -127,7 +130,8 @@ function mapStateToProps(state) {
   return{
     token: state.userData.token,
     userDataValue: state.userData.user,
-    errorMessage: state.userData.error
+    errorMessage: state.userData.error,
+    success: state.userData.success
   }
 }
 

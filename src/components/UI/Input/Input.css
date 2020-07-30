@@ -1,5 +1,8 @@
 .Input {
   padding-bottom: 12px;
+  position: relative;
+  max-width: 435px;
+  width: 100%;
 }
 
 .Input input {
@@ -19,6 +22,7 @@
   align-items: center;
   color: #6879BB;
   padding: 6px 12px;
+  
 }
 
 .Input.invalid input:focus{

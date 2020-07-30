@@ -7,3 +7,4 @@ export const AUTH_ERROR = "AUTH_ERROR"
 export const CLEAR_ERROR = "CLEAR_ERROR"
 
 export const EDIT_USER_DATA_SUCCESS = "EDIT_USER_DATA_SUCCESS"
+export const SUCCESS = "SUCCESS"
