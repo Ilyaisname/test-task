@@ -16,7 +16,7 @@ import { clearErrorMessage } from '../../store/actions/actionsUser'
 class UserPage extends Component {
   constructor(props) {
     super(props)
-    let { userDataValue,initializeUser } = this.props
+    let { userDataValue, initializeUser } = this.props
     initializeUser( userDataValue )
   }
 
@@ -58,6 +58,13 @@ class UserPage extends Component {
       }
 
       this.props.editUserData(newUserData, this.props.mutate, this.props.token)
+      
+      const { initializeUser } = this.props
+      initializeUser( {
+        firstName: firstName, 
+        secondName: secondName, 
+        email: email
+      } )
   }
 
   buttonVisible = () => {
