@@ -44,7 +44,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.userData.token
+    isAuthenticated: sessionStorage.getItem('token')
   }
 } 
 

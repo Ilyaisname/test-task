@@ -12,17 +12,16 @@ import { validate } from '../../components/formHelpers/validateForm/formInputVal
 import FormErrorMessage from '../../components/formHelpers/FormErrorMessage/FormErrorMessage' 
 import { clearErrorMessage } from '../../store/actions/actionsUser'
 
+const optionFields= {
+  email: createOptionName("email", "email", "Электронная почта"),
+  password: createOptionName("password", "password", "Пароль") 
+}
+
 class AuthForm extends Component {
-  state = {
-    optionFields: {
-      email: createOptionName("email", "email", "Электронная почта"),
-      password: createOptionName("password", "password", "Пароль") 
-    }
-  }
 
   renderInputs() {
-    return Object.keys(this.state.optionFields).map((optionName, index) => {
-      const option = this.state.optionFields[optionName]
+    return Object.keys(optionFields).map((optionName, index) => {
+      const option = optionFields[optionName]
       return (
 
         <Field

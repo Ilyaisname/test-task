@@ -16,7 +16,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 const client = new ApolloClient({
   uri: "http://localhost:4000/api",
   request: (operation) => {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : ''

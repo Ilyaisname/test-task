@@ -12,6 +12,14 @@ import { validate } from '../../components/formHelpers/validateForm/editUserVali
 import FormErrorMessage from '../../components/formHelpers/FormErrorMessage/FormErrorMessage'
 import { clearErrorMessage } from '../../store/actions/actionsUser'
 
+  
+const optionFields = {
+  firstName: createOptionName("text", "firstName", "Имя"),
+  secondName: createOptionName("text","secondName","Фамилия"),
+  email: createOptionName("email", "email", "Электронная почта"),
+  password: createOptionName("password", "password", "Пароль"),
+  repeatPassword: createOptionName("password", "repeatPassword", "Повторите пароль")
+}
 
 class UserPage extends Component {
   constructor(props) {
@@ -20,19 +28,9 @@ class UserPage extends Component {
     initializeUser( userDataValue )
   }
 
-  state = {
-    optionFields: {
-      firstName: createOptionName("text", "firstName", "Имя"),
-      secondName: createOptionName("text","secondName","Фамилия"),
-      email: createOptionName("email", "email", "Электронная почта"),
-      password: createOptionName("password", "password", "Пароль"),
-      repeatPassword: createOptionName("password", "repeatPassword", "Повторите пароль")
-    }
-  }
-
   renderInputs() {
-    return Object.keys(this.state.optionFields).map((controlName, index) => {
-      const option = this.state.optionFields[controlName]
+    return Object.keys(optionFields).map((controlName, index) => {
+      const option = optionFields[controlName]
       return(
         <div className="form__row-wrap" key={controlName + index}>
           <label htmlFor = {option.type + index}>{option.placeholder}</label>
@@ -50,7 +48,7 @@ class UserPage extends Component {
   saveUserData = () => {
     const { firstName, secondName, email, password } = this.props.userEditValue
       const newUserData = {
-        id: +localStorage.getItem('userId'),
+        id: +sessionStorage.getItem('userId'),
         firstName: firstName,
         secondName: secondName,
         email: email,
@@ -136,7 +134,8 @@ const UserPageQuery = graphql(editUser)(UserPage)
 function mapStateToProps(state) {
   return{
     token: state.userData.token,
-    userDataValue: state.userData.user,
+    // userDataValue: state.userData.user,
+    userDataValue: JSON.parse( sessionStorage.getItem('user') ),
     errorMessage: state.userData.error,
     success: state.userData.success
   }

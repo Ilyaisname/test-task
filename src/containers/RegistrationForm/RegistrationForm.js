@@ -12,21 +12,19 @@ import { validate } from '../../components/formHelpers/validateForm/formInputVal
 import FormErrorMessage from '../../components/formHelpers/FormErrorMessage/FormErrorMessage'
 import { clearErrorMessage } from '../../store/actions/actionsUser'
 
+const optionFields = {
+  firstName: createOptionName("text", "firstName", "Имя"),
+  secondName: createOptionName("text","secondName","Фамилия"),
+  email: createOptionName("email", "email", "Электронная почта"),
+  password: createOptionName("password", "password", "Пароль"),
+  repeatPassword: createOptionName("password", "repeatPassword", "Повторите пароль")
+}
+
 class RegistrForm extends Component {
 
-  state = {
-    optionFields: {
-      firstName: createOptionName("text", "firstName", "Имя"),
-      secondName: createOptionName("text","secondName","Фамилия"),
-      email: createOptionName("email", "email", "Электронная почта"),
-      password: createOptionName("password", "password", "Пароль"),
-      repeatPassword: createOptionName("password", "repeatPassword", "Повторите пароль")
-    }
-  }
-
   renderInputs() {
-    return Object.keys(this.state.optionFields).map((controlName, index) => {
-      const option = this.state.optionFields[controlName]
+    return Object.keys(optionFields).map((controlName, index) => {
+      const option = optionFields[controlName]
 
       return(
         <Field

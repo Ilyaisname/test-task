@@ -12,8 +12,11 @@ export function authentication(email, password, mutate) {
    
       const data = request.data.login
       
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('userId', data.user.id)
+      // localStorage.setItem('token', data.token)
+      // localStorage.setItem('userId', data.user.id)
+      sessionStorage.setItem('token', data.token)
+      sessionStorage.setItem('userId', data.user.id)
+      sessionStorage.setItem('user', JSON.stringify(data.user))
 
       dispatch(authSuccess(data))
 
@@ -37,8 +40,11 @@ export function createNewUserData(newUser, mutate){
         
       const data = reqest.data.login
 
-      localStorage.setItem('userId', data.user.id)
-      localStorage.setItem('token', data.token)
+      // localStorage.setItem('userId', data.user.id)
+      // localStorage.setItem('token', data.token)
+      sessionStorage.setItem('token', data.token)
+      sessionStorage.setItem('userId', data.user.id)
+      sessionStorage.setItem('user', JSON.stringify(data.user))
 
       dispatch(authSuccess(data))
   
@@ -65,6 +71,7 @@ export function editUserData(newUserData, mutate) {
 
       const userData = reqest.data.editUser
       dispatch(editSuccess(userData))
+      sessionStorage.setItem('user', JSON.stringify(userData))
 
       if (userData) {
         setTimeout( () => {
